@@ -30,5 +30,25 @@ An Extensive MCP server with several tools made using win32com to interact with 
    ```bash
    python app.py
    ```
+ **Configure Server with Any MCP Client (Claude, Cursor, etc)**
+
+ Add Server to Config file as follows to access the tools
+ 
+   ```bash
+   p{
+    "mcpServers": {
+      "PhotoshopAdv": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "Path/To/Directory",
+          "run",
+          "psMCP.py"
+        ],
+        "timeout": 60000 
+      }
+    }
+  }
+   ```
 
    
