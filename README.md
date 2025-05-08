@@ -35,7 +35,7 @@ An Extensive MCP server with several tools made using win32com to interact with 
  Add Server to Config file as follows to access the tools
  
    ```bash
-   p{
+   {
     "mcpServers": {
       "PhotoshopAdv": {
         "command": "uv",
