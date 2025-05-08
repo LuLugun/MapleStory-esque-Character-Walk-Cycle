@@ -1,0 +1,14 @@
+{
+    "mcpServers": {
+      "PhotoshopAdv": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "Path/To/Directory",
+          "run",
+          "psMCP.py"
+        ],
+        "timeout": 60000 
+      }
+    }
+  }

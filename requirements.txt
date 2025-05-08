@@ -1,0 +1,5 @@
+mcp[cli]
+pypiwin32
+google-genai
+gradio
+python-dotenv
