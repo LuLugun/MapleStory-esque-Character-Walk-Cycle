@@ -18,7 +18,7 @@ An Extensive MCP server with several tools made using win32com to interact with 
    ![Gradio Example](example/gradio.png)
    Set Gemini Key in .env
    ```bash
-   GEMINI_API_KEY+PASTE_YOUR_KEY_HERE
+   GEMINI_API_KEY=PASTE_YOUR_KEY_HERE
    ```
   Set Directories for PSDs, Assets and Exports
    ```bash
