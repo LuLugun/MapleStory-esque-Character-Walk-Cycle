@@ -83,7 +83,7 @@ class MCPClientWrapper:
         # Build tool list for prompt
         tool_list = "\n".join([f"- {tool['name']}: {tool['description']}" for tool in self.tools])
         prompt = (
-            "Use the tools with values that seem right to you, do not ask inout for every tool use unless necessary. You have access to the following tools:\n"
+            "Use the tools with values that seem right to you, do not ask inout for every tool use unless necessary. You can make multiple tool calls if necessary to complete a task(one after another). You have access to the following tools:\n"
             + tool_list +
             "\n\nIf you want to use a tool, respond ONLY with a JSON object like this:\n"
             '{"tool_call": {"name": "<tool_name>", "args": {"param1": "value1"}}}'
