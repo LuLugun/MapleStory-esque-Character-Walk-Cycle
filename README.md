@@ -51,5 +51,11 @@ An Extensive MCP server with several tools made using win32com to interact with 
     }
   }
    ```
+## Use Cases
+- Automate repetitive Photoshop tasks (e.g., inserting text, resizing, exporting).
+- Build custom design pipelines for batch PSD editing.
+- Rapidly generate marketing creatives from templates.
+- Toggle layers or apply effects dynamically through Python scripts.
+- Streamline creative asset versioning and export processes.
 
    
