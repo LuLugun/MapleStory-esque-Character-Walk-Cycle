@@ -14,7 +14,8 @@ An Extensive MCP server with several tools made using win32com to interact with 
    pip install -r requirements.txt
    ```
  **Run Using the Gradio Client Provided**
-
+ 
+   ![Gradio Example](example/gradio.png)
    Set Gemini Key in .env
    ```bash
    GEMINI_API_KEY+PASTE_YOUR_KEY_HERE
