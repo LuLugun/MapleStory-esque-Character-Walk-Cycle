@@ -18,13 +18,13 @@ An Extensive MCP server with several tools made using win32com to interact with 
    ![Gradio Example](example/gradio.png)
    Set Gemini Key in .env
    ```bash
-   GEMINI_API_KEY=PASTE_YOUR_KEY_HERE
+   GEMINI_API_KEY = PASTE_YOUR_KEY_HERE
    ```
   Set Directories for PSDs, Assets and Exports
    ```bash
-   PSD_DIRECTORY = r"D:\Photoshop Files"
-   EXPORT_DIRECTORY = r"D:\PsMCP-Exports"
-   ASSETS_DIR = r"D:\PsMCP-Assets"
+   PSD_DIRECTORY = "D:\\Photoshop Files"
+   EXPORT_DIRECTORY = "D:\\PsMCP-Exports"
+   ASSETS_DIR = "D:\\PsMCP-Assets"
    ```
   Run the App and connect to the Server
   
