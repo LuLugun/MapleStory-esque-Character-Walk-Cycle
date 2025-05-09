@@ -14,7 +14,8 @@ An Extensive MCP server with several tools made using win32com to interact with 
    pip install -r requirements.txt
    ```
  **Run Using the Gradio Client Provided**
- ---
+ 
+---
 
 >  **Heads Up**: The Gemini Gradio client I've provided, for some reason does only a maximum of one tool call for any request, use this just to test the tool. For actual usage use Claude ot Cursor
 
