@@ -1,0 +1,87 @@
+# 楓之谷風格角色行走圖生成配置
+
+# 基本設定
+model_settings:
+  base_model: "runwayml/stable-diffusion-v1-5"
+  scheduler: "DPMSolverMultistepScheduler"
+  use_xformers: true
+  clip_skip: 2
+
+# 圖像設定
+image_settings:
+  width: 512
+  height: 512
+  original_sprite_size: [32, 48]  # 楓之谷標準尺寸
+  upscale_factor: 8  # 256x384 供SD使用
+  output_format: "PNG"
+
+# 生成參數（優化版）
+generation_params:
+  num_inference_steps: 50  # 增加推理步驟提高品質
+  guidance_scale: 12.0     # 增加指導強度
+  negative_prompt_guidance_scale: 1.5
+  num_frames: 8  # 行走動畫幀數
+  
+# 提示詞設定（優化版）
+prompts:
+  base_positive: "high quality pixel art, maplestory style character, 2d game sprite, side view, transparent background, clean sharp pixels, 32x48 resolution style, retro game character, detailed pixel art"
+  base_negative: "blurry, low quality, 3d render, realistic, photographic, smooth gradients, antialiasing, jpeg artifacts, watermark, text, signature, low resolution, pixelated badly, distorted, malformed"
+  
+  character_templates:
+    warrior:
+      positive: "armored warrior knight, metal sword and shield, brown hair, blue plate armor, fantasy medieval style, heroic pose"
+      style: "medieval fantasy warrior"
+    
+    archer:
+      positive: "forest archer ranger, wooden bow and arrows, green hooded cloak, leather armor, nature style"
+      style: "forest ranger archer"
+    
+    mage:
+      positive: "magical wizard mage, pointed wizard hat, wooden staff with crystal, blue robes, mystical aura"
+      style: "fantasy magic caster"
+    
+    ninja:
+      positive: "black ninja assassin, katana sword, face mask, dark clothing, stealth pose, japanese style"
+      style: "japanese martial arts ninja"
+    
+    pirate:
+      positive: "pirate captain, black tricorn hat, curved cutlass, red eyepatch, navy blue coat, maritime style"
+      style: "maritime pirate adventure"
+    
+    knight:
+      positive: "holy paladin knight, shining plate armor, golden cross emblem, righteous warrior, divine style"
+      style: "religious holy warrior"
+    
+    kelly:
+      positive: "cute anime girl character, shoulder-length brown hair, red hair ribbon bow, brown casual dress, red shoes, friendly smile, kawaii style, maplestory character design"
+      style: "cute anime character"
+
+# ControlNet 設定（調整）
+controlnet:
+  enabled: true
+  model: "lllyasviel/sd-controlnet-openpose"
+  conditioning_scale: 0.8  # 降低控制強度給更多創作自由
+  control_guidance_start: 0.0
+  control_guidance_end: 0.8  # 在生成後期減少控制
+
+# 動畫設定
+animation:
+  walk_cycle_frames: 8
+  fps: 8
+  directions: ["right", "left"]  # 可擴展為四方向
+  pose_keyframes:
+    - name: "start_step"
+      description: "右腳起步"
+    - name: "mid_stride" 
+      description: "雙腳平行"
+    - name: "left_step"
+      description: "左腳起步"
+    - name: "return"
+      description: "回到起始"
+
+# 後處理設定
+postprocess:
+  background_removal: true
+  edge_sharpening: true
+  sprite_sheet_layout: "horizontal"  # 水平排列
+  add_padding: 2  # 像素間距 

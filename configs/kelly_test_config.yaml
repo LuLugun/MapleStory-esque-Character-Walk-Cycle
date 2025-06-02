@@ -1,0 +1,29 @@
+controlnet:
+  conditioning_scale: 0.5
+  enabled: false
+generation_params:
+  guidance_scale: 15.0
+  negative_prompt_guidance_scale: 2.0
+  num_inference_steps: 30
+image_settings:
+  height: 384
+  original_sprite_size:
+  - 32
+  - 48
+  width: 256
+model_settings:
+  base_model: runwayml/stable-diffusion-v1-5
+  scheduler: DPMSolverMultistepScheduler
+prompts:
+  base_negative: blurry, low quality, 3d render, realistic, photographic, smooth gradients,
+    antialiasing, jpeg artifacts, watermark, text, signature, malformed, distorted,
+    extra limbs, missing limbs
+  base_positive: masterpiece, best quality, pixel art, maplestory style character,
+    2d game sprite, side view walking pose, transparent background, clean sharp pixels,
+    detailed sprite art
+  character_templates:
+    kelly:
+      positive: cute anime girl, shoulder-length brown hair, red hair ribbon bow,
+        brown casual knee-length dress, red mary jane shoes, friendly smile expression,
+        standing pose, kawaii style, chibi proportions, maplestory character design
+      style: cute anime character, pixel art

@@ -1,0 +1,66 @@
+# 模型下載與配置清單
+
+# Stable Diffusion 基礎模型
+base_models:
+  sd15:
+    model_id: "runwayml/stable-diffusion-v1-5"
+    local_path: "models/checkpoints/sd15"
+    download_url: "https://huggingface.co/runwayml/stable-diffusion-v1-5"
+  
+  sd15_pixel:
+    model_id: "AuroBoros/pixel-art-xl"  # 像素藝術專用模型
+    local_path: "models/checkpoints/pixel-art"
+    download_url: "https://huggingface.co/AuroBoros/pixel-art-xl"
+
+# LoRA 模型
+lora_models:
+  pixel_art:
+    name: "pixel-art-style"
+    local_path: "models/lora/pixel_art.safetensors"
+    download_url: "https://civitai.com/models/pixel-art-lora"
+    weight: 0.8
+  
+  maplestory_style:
+    name: "maplestory-character"
+    local_path: "models/lora/maplestory.safetensors"
+    download_url: "https://civitai.com/models/maplestory-lora"
+    weight: 0.9
+
+# ControlNet 模型
+controlnet_models:
+  openpose:
+    model_id: "lllyasviel/sd-controlnet-openpose"
+    local_path: "models/controlnet/openpose"
+    download_url: "https://huggingface.co/lllyasviel/sd-controlnet-openpose"
+  
+  reference:
+    model_id: "lllyasviel/sd-controlnet-ref"
+    local_path: "models/controlnet/reference"
+    download_url: "https://huggingface.co/lllyasviel/sd-controlnet-ref"
+
+# 額外工具模型
+additional_models:
+  rembg:
+    name: "背景移除模型"
+    model_id: "u2net"
+    local_path: "models/rembg/"
+  
+  upscaler:
+    name: "像素藝術放大模型"
+    model_id: "RealESRGAN_x4plus_anime_6B"
+    local_path: "models/upscaler/"
+
+# 下載優先順序
+download_priority:
+  1: "sd15"
+  2: "openpose"
+  3: "pixel_art"
+  4: "maplestory_style"
+  5: "reference"
+
+# 模型儲存設定
+storage_settings:
+  use_safetensors: true
+  cache_dir: "models/cache/"
+  max_cache_size: "10GB"
+  auto_cleanup: true 

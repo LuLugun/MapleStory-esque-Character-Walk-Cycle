@@ -1,67 +1,57 @@
-# PsMCP-MCP-Server-for-Photoshop
-Watch the Demo Below
+# 楓之谷風格角色行走圖製作專案
 
-[![Watch Demo Video](example/image.png)](https://media-hosting.imagekit.io/0e939780eeb24fd9/PhotoshopMCP.mp4?Expires=1841334328&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=sV1V82oUaMEfNTNYOHGeU7H9gLc8SsuNgQHRthU9j0exVXaC88plw8JiDTCj6IzHlKkToY0x5Xi4NzGndgHTQHKGrIpVHxJvWUCzcfWlq6LA2NEv9Fb4Yn0tDDSkJyWdTT9ISXlCvIXuBNVPgX4VT5TGB7KRM90vC6wIX31LH6DxX6qd4sVaY1o-ydx9gCe~hN9kSMx9IWMXc1NC50mgv~n5nOjgde8NJdrKJPB0WBZylW7BitIRCtiO2O2v6~C4x6bqbC~UTdQMdjldp0AwNTv2M2XT7NtrXsXA-QKOPa6Be0ysMMakMsAJc6xmMR25FJHdwap9ObgimCTZ4J9fIQ__)
+## 專案概述
 
+本專案使用 **生成式 AI** 快速製作「楓之谷風格」的 **行走圖（Walk Cycle Sprite Sheet）**，包含模型選擇、資料準備、AI 控制技術與後製組板。
 
-## Usage
+## 專案結構
 
- **Install Requirements**
+```
+PsMCP/
+├── data/                    # 資料目錄
+│   ├── raw_sprites/         # 原始楓之谷素材
+│   ├── processed/           # 處理後的素材
+│   └── references/          # 參考圖片
+├── models/                  # AI 模型相關
+│   ├── checkpoints/         # SD 檢查點
+│   ├── lora/               # LoRA 模型
+│   └── controlnet/         # ControlNet 模型
+├── scripts/                # 自動化腳本
+│   ├── data_preparation.py  # 資料預處理
+│   ├── sprite_generator.py  # 角色生成
+│   └── sheet_composer.py    # 拼版組合
+├── output/                 # 輸出結果
+│   ├── frames/             # 單幀圖片
+│   └── sprite_sheets/      # 最終拼版
+├── configs/                # 配置文件
+│   ├── generation_config.yaml
+│   └── models_config.yaml
+└── requirements.txt        # 依賴套件
 
-   Activate your Python environment and install dependencies:
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
- **Run Using the Gradio Client Provided**
- 
----
+## 重點摘要
 
->  **Heads Up**: The Gemini Gradio client I've provided, for some reason does only a maximum of one tool call for any request, use this just to test the tool. For actual usage use Claude ot Cursor
+1. **資料來源**：蒐集楓之谷角色像素圖，僅用於學術／個人研究
+2. **模型選擇**：Stable Diffusion 1.5/XL + 像素藝術 LoRA
+3. **角色一致性**：ControlNet (OpenPose/Reference-Only) 或 AnimateDiff
+4. **產生流程**：8~12 張範例走路幀 → 上取樣 → AI 生成 → 拼版
+5. **自動化**：ComfyUI/自訂工作流一鍵生成
 
----
- 
-   ![Gradio Example](example/gradio.png)
-   Set Gemini Key in .env
-   ```bash
-   GEMINI_API_KEY = PASTE_YOUR_KEY_HERE
-   ```
-  Set Directories for PSDs, Assets and Exports
-   ```bash
-   PSD_DIRECTORY = "D:\\Photoshop Files"
-   EXPORT_DIRECTORY = "D:\\PsMCP-Exports"
-   ASSETS_DIR = "D:\\PsMCP-Assets"
-   ```
-  Run the App and connect to the Server
-  
-   ```bash
-   python app.py
-   ```
- **Configure Server with Any MCP Client (Claude, Cursor, etc)**
+## 快速開始
 
- Add Server to Config file as follows to access the tools
- 
-   ```bash
-   {
-    "mcpServers": {
-      "PhotoshopAdv": {
-        "command": "uv",
-        "args": [
-          "--directory",
-          "Path/To/Directory",
-          "run",
-          "psMCP.py"
-        ],
-        "timeout": 60000 
-      }
-    }
-  }
-   ```
-## Use Cases
-- Automate repetitive Photoshop tasks (e.g., inserting text, resizing, exporting).
-- Build custom design pipelines for batch PSD editing.
-- Rapidly generate marketing creatives from templates.
-- Toggle layers or apply effects dynamically through Python scripts.
-- Streamline creative asset versioning and export processes.
+1. 安裝依賴：`pip install -r requirements.txt`
+2. 準備資料：`python scripts/data_preparation.py`
+3. 生成角色：`python scripts/sprite_generator.py`
+4. 組合拼版：`python scripts/sheet_composer.py`
 
-   
+## 版權聲明
+
+楓之谷美術屬於 Nexon 著作財產；本專案僅作個人研究或學習用途，不可直接販售或發佈素材。
+
+## 參考資源
+
+- [The Spriters Resource](https://www.spriters-resource.com/pc_computer/maplestory/)
+- [Pixel-Art Sprite Sheet SD 模型](https://www.reddit.com/r/StableDiffusion/comments/yj1kbi/ive_trained_a_new_model_to_output_pixel_art/)
+- [ControlNet GitHub](https://github.com/lllyasviel/ControlNet)
+- [Aseprite 官方文檔](https://www.aseprite.org/docs/sprite-sheet/) 
